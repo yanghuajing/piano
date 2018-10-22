@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="p.css" />
+    <script type="text/javascript" src="p.js"></script>
+
+</head>
+<body>
+<section class="main shift">
+    <!--用<audio></audio>标签引入音频源-->
+    <audio data-key="65" src="audio/c4.ogg"></audio>
+    <audio data-key="87" src="audio/c4m.ogg"></audio>
+    <audio data-key="83" src="audio/d4.ogg"></audio>
+    <audio data-key="69" src="audio/d4m.ogg"></audio>
+    <audio data-key="68" src="audio/e4.ogg"></audio>
+    <audio data-key="70" src="audio/f4.ogg"></audio>
+    <audio data-key="89" src="audio/f4m.ogg"></audio>
+    <audio data-key="71" src="audio/g4.ogg"></audio>
+    <audio data-key="85" src="audio/g4m.ogg"></audio>
+    <audio data-key="72" src="audio/a4.ogg"></audio>
+    <audio data-key="73" src="audio/a4m.ogg"></audio>
+    <audio data-key="74" src="audio/b4.ogg"></audio>
+    <audio data-key="75" src="audio/c5.ogg"></audio>
+
+
+    <!--整个钢琴用 <ul></ul> 标签，每一个 <div></div> 标签对应一个琴键-->
+    <ul>
+        <li>
+            <div data-key="65" class="key whiteKey">c4</div>
+            <div data-key="87" class="key blackKey">c4m</div>
+        </li>
+        <li>
+            <div data-key="83" class="key whiteKey">d4</div>
+            <div data-key="69" class="key blackKey">d4m</div>
+        </li>
+        <li><div  data-key="68" class="key whiteKey">e4</div></li>
+        <li>
+            <div data-key="70" class="key whiteKey">f4</div>
+            <div data-key="89" class="key blackKey">f4m</div>
+        </li>
+        <li>
+            <div data-key="71" class="key whiteKey">g4</div>
+            <div data-key="85" class="key blackKey">g4m</div>
+        </li>
+        <li>
+            <div data-key="72"  class="key whiteKey">a4</div>
+            <div data-key="73"  class="key blackKey">a4m</div>
+        </li>
+        <li>
+            <div data-key="74" class="key whiteKey">b4</div>
+        </li>
+        <li>
+            <div data-key="75" class="key whiteKey">c5</div>
+        </li>
+    </ul>
+</section>
+
+<script>
+    function playAudio(e){//变换
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);//audio 音频
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);//key 按钮
+        const keys = document.querySelectorAll('.key');//获取全部的key类
+
+        audio.currentTime=0;//时间停止；
+        audio.play();
+
+        key.classList.toggle('playing');//pop up action
+        var timeID=setTimeout("key.classList.toggle('playing');",200);
+        clearTimeout(timeID);
+    }
+
+    window.addEventListener('keydown',playAudio);
+
+</script>
+
+</body>
+</html>
